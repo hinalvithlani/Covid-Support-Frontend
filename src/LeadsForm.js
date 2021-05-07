@@ -3,8 +3,10 @@ import "./css/Leads.css";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
 import axios from "axios";
-import Location from "./images/location.png"
 import { Redirect } from "react-router-dom";
+import { StateDropdown, RegionDropdown } from 'react-indian-state-region-selector';
+import States from "./State.js";
+import City from "./City.js"
 
 const LeadsForm = () => {
     const [formData, setFormData] = React.useState({});
@@ -12,32 +14,27 @@ const LeadsForm = () => {
     const onChangeEmail = (e) => {
       setFormData({ ...formData, email: e.target.value });
     };
-    const onChangePass = (e) => {
-        setFormData({ ...formData, password: e.target.value });
-    };
     const onChangeName = (e) => {
-      setFormData({ ...formData, username: e.target.value });
+      setFormData({ ...formData, name: e.target.value });
     };
-    const onChangeAddress = (e) => {
-        setFormData({ ...formData, address: e.target.value });
+    const onChangeState = (e) => {
+        setFormData({ ...formData, state: e.target.value });
     };
     const onChangePhNo = (e) => {
-        setFormData({ ...formData, phno: e.target.value });
+        setFormData({ ...formData, phone_number: e.target.value });
     };
-    const onChangeLoc = (e) => {
-        setFormData({ ...formData, loc: e.target.value });
-    };
+
     const onChangeNb = (e) => {
-        setFormData({ ...formData, nb: e.target.value });
+        setFormData({ ...formData, beds: e.target.value });
     };
     const onChangeNv = (e) => {
-        setFormData({ ...formData, nv: e.target.value });
+        setFormData({ ...formData, oxygen: e.target.value });
     };
     const onChangeNr = (e) => {
-        setFormData({ ...formData, nr: e.target.value });
+        setFormData({ ...formData, others: e.target.value });
     };
-    const onChangeNo = (e) => {
-        setFormData({ ...formData, no: e.target.value });
+    const onChangeCity = (e) => {
+        setFormData({ ...formData, city: e.target.value });
     };
 
     const check1 = () => {
@@ -49,7 +46,7 @@ const LeadsForm = () => {
     const addLeads = () => {
       axios
         .post(
-          "http://localhost:3001/api/users/signup",
+          "http://localhost:3002/Add",
           { ...formData },
           {
             withCredentials: true,
@@ -61,7 +58,7 @@ const LeadsForm = () => {
         })
         .catch((e) => {
           console.log(e);
-          window.alert("Wrong info");
+          window.alert("Not added");
         });
     }
     return(
@@ -70,54 +67,38 @@ const LeadsForm = () => {
             <div>
                 <div className="section">
                     <span>1</span>
-                    First Name &amp; Address
+                    Personal Details
                 </div>
                 <div className="inner-wrap">
                     <label>Your Full Name 
-                        <input type="text" name="field1" value={formData.username} onChange={onChangeName}/>
+                        <input type="text" name="field1" value={formData.username} onChange={onChangeName} required/>
                     </label>
-                    <label>Address 
-                        <textarea name="field2" value={formData.address} onChange={onChangeAddress}></textarea>
-                    </label>
-                </div>
-
-                <div className="section">
-                    <span>2</span>
-                    Email &amp; Phone
-                </div>
-                <div className="inner-wrap">
                     <label>Email Address 
-                        <input type="email" name="field3" value={formData.email} onChange={onChangeEmail}/>
-                    </label>
-                    <label>Password 
-                        <input type="password" name="field30" value={formData.password} onChange={onChangePass}/>
+                        <input type="email" name="field3" value={formData.email} onChange={onChangeEmail} required/>
                     </label>
                     <label>Phone Number 
-                        <input type="text" value={formData.phno} onChange={onChangePhNo} name="field4" onInput={check2} maxLength="10" />
+                        <input type="text" value={formData.phno} onChange={onChangePhNo} name="field4" maxLength="10" />
                     </label>
                 </div>
 
-                <div className="section"><span>3</span>Medical Information</div>
+                <div className="section"><span>2</span>Medical Information</div>
                 <div className="inner-wrap">
-                    <label>Location
-                        <Button style={{marginLeft: "20px"}}><img src={Location} alt="" srcSet=""
-                            style={{width: "15px"}} />
-                        </Button>
-                        <input type="text" name="field5" value={formData.loc} onChange={onChangeLoc} style={{marginTop: "5px"}} />
+                    <label> State
+                        <States id="ss" value={formData.state} onChange={onChangeState}></States>
+                    </label>
+                    <label> City
+                        <City id="ss" value={formData.city} onChange={onChangeCity}></City>                    
                     </label>
                     <label>Number Of Vacant Beds 
-                        <input type="text" name="field6" value={formData.nb} onChange={onChangeNb}
-                        onInput={check1} />
+                        <input type="number" name="field6" value={formData.nb} onChange={onChangeNb}
+                         />
                     </label>
-                    <label>Vaccines Available ?
-                        <input type="text" placeholder="Yes or No" name="field7" value={formData.nv} onChange={onChangeNv}
-                        pattern="yes" />
+                    <label> Number of Oxygen cylinders
+                        <input type="number" name="field7" value={formData.nv} onChange={onChangeNv} 
+                        />
                     </label>
-                    <label>Remdesever Available ?
-                        <input type="text" placeholder="Yes or No" name="field8" value={formData.nr} onChange={onChangeNr} />
-                    </label>
-                    <label>Oxygen Available ?
-                        <input type="text" placeholder="Yes or No" name="field9" value={formData.no} onChange={onChangeNo} />
+                    <label>Others
+                        <input type="text" name="field8" value={formData.nr} onChange={onChangeNr} />
                     </label>
                 </div>
                 <div className="button-section">
