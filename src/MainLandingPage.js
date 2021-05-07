@@ -1,35 +1,19 @@
 import React from "react";
-//import AnchorLink from "react-anchor-link-smooth-scroll";
 import "./css/MainLandingPage.css";
-// import { Rnd } from "react-rnd";
-//import { components } from "ComponentRenderer.js";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container, Content2Xl } from "components/misc/Layouts";
 import tw from "twin.macro";
-// import styled from "styled-components";
-//import { css } from "styled-components/macro";
-import { LogoLink } from "components/headers/light.js";
 import { SectionHeading as HeadingBase } from "components/misc/Headings";
 import { SectionDescription as DescriptionBase } from "components/misc/Typography";
-
 import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
 import { ReactComponent as RadioIcon } from "feather-icons/dist/icons/radio.svg";
-//import { ReactComponent as HandleIcon } from "images/handle-icon.svg";
-//import { ReactComponent as ArrowRightIcon } from "images/arrow-right-3-icon.svg";
 
 import doc from "images/doc1.png";
-//import useInView from "@owaiswiz/use-in-view";
 
-/* Hero */
 const Row = tw.div`flex`;
-//const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
-//const NavLink = tw.a`mt-4 lg:mt-0 transition duration-300 font-medium pb-1 border-b-2 mr-12 text-gray-700 border-gray-400 hocus:border-gray-700`;
-//const PrimaryNavLink = tw(
-//NavLink
-//)`text-gray-100 bg-primary-500 px-6 py-3 border-none rounded hocus:bg-primary-900 focus:shadow-outline mt-6 md:mt-4 lg:mt-0`;
 const HeroRow = tw(
   Row
-)`flex-col lg:flex-row justify-between items-center pt-8 lg:pt-12 pb-16 max-w-screen-2xl mx-auto flex-wrap`;
+)`flex-col lg:flex-row justify-between items-center pt-1 pb-4 max-w-screen-2xl mx-auto flex-wrap`;
 
 const Column = tw.div`flex-1`;
 
@@ -47,10 +31,6 @@ const Heading = tw(
 const Description = tw(
   DescriptionBase
 )`mt-4 text-center lg:text-left lg:text-base text-gray-700 max-w-lg mx-auto lg:mx-0`;
-//const Actions = tw.div`flex flex-col sm:flex-row justify-center lg:justify-start`;
-//const ActionButton = tw(
-//AnchorLink
-//)`px-8 py-3 font-bold rounded bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300 mt-12 inline-block tracking-wide text-center px-10 py-4 font-semibold tracking-normal`;
 
 const FeatureList = tw.ul`mt-6 leading-loose flex flex-wrap max-w-xl mx-auto lg:mx-0`;
 const Feature = tw.li`mt-2 flex items-center flex-shrink-0 w-full sm:w-1/2 justify-center lg:justify-start`;
@@ -60,42 +40,13 @@ const ImageColumn = tw(Column)`mx-auto lg:mr-0 relative mt-16 lg:mt-0 lg:ml-8`;
 const ImageContainer = tw.div``;
 const Image = tw.img`max-w-full rounded-t sm:rounded`;
 
-//const ComponentsContainer = tw.div`mt-24`;
-//const ComponentsType = tw.h3`text-4xl font-black text-primary-500 border-b-4 border-primary-500 inline-block`;
-// const Components = tw.div``;
-// const Component = tw.div`mt-12 border rounded-lg bg-white`;
-// const ComponentHeading = tw.div`px-8 py-5 border-b flex flex-col sm:flex-row justify-between items-center`;
-// const ComponentName = tw.h6`text-lg`;
-// const ComponentPreviewLink = tw.a`mt-4 sm:mt-0 text-primary-500 hocus:text-primary-500 transition duration-300 font-semibold flex items-center`;
-// const ComponentContent = tw.div`flex justify-between overflow-hidden rounded-b-lg bg-gray-600 relative`;
-// const ResizableBox = styled(Rnd)`
-//   ${tw`relative! bg-white pr-4`}
-//   .resizeHandleWrapper > div {
-//     ${tw`w-4! right-0!`}
-//   }
-// `;
-// const ResizeHandleButton = tw.button`cursor-col-resize focus:outline-none w-4 border-l bg-gray-100 absolute right-0 inset-y-0`;
-
 export default ({
   features = null,
-  // landingPages = components.landingPages,
-  // innerPages = components.innerPages,
-  // blocks = components.blocks,
   heading = "Check for Covid Resources",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  description = "In these trying times, let us support one another and help those in need. If you have any verified leads for COVID Resources, please do fill the Leads Collection Form in the Add Page. If you wish to acquire any resources then go to the Search Page and search for covid resources in your city. Stay Safe! Stay indoors!",
 }) => {
   window.gtag("js", new Date());
   window.gtag("config", "UA-45799926-9");
-
-  //const previewImageAnimationVariants = {
-  //rest: {
-  //backgroundPositionY: "0%",
-  //},
-  //hover: {
-  //backgroundPositionY: "100%",
-  //transition: { type: "tween", ease: "linear", duration: 5 },
-  //},
-  //};
 
   features = features || [
     `Beds`,
@@ -118,10 +69,10 @@ export default ({
               Last updated on 6th May, 2021
             </UpdateNotice>
             <TextColumn>
-              <Heading as='h1' className='aa'>
+              <Heading style={{textAlign: "left"}} as='h1' className='aa'>
                 {heading}
               </Heading>
-              <Description>{description}</Description>
+              <Description style={{textAlign: "justify"}}>{description}</Description>
               <FeatureList>
                 {features.map((feature, index) => (
                   <Feature key={index}>
@@ -142,100 +93,3 @@ export default ({
     </AnimationRevealPage>
   );
 };
-
-// const BlocksRenderer = ({ blocks }) => {
-//   const [lastVisibleBlockIndex, setLastVisibleBlockIndex] = useState(0);
-
-//   const updateLastVisibleBlockIndex = (index) => {
-//     console.log("LAST WAS ", lastVisibleBlockIndex);
-//     if (index > lastVisibleBlockIndex) setLastVisibleBlockIndex(index);
-//   };
-
-//   return (
-//     <ComponentsContainer>
-//       {blocks.map(
-//         (block, index) =>
-//           lastVisibleBlockIndex + 1 >= index && (
-//             <Block
-//               key={index}
-//               components={block}
-//               notifyIsVisible={() => updateLastVisibleBlockIndex(index)}
-//             />
-//           )
-//       )}
-//     </ComponentsContainer>
-//   );
-// };
-
-// const Block = ({ notifyIsVisible, components }) => {
-//   const offset = 30;
-//   const [ref, inView] = useInView(offset);
-
-//   useEffect(() => {
-//     if (inView) notifyIsVisible();
-//   }, [inView, notifyIsVisible]);
-
-//   const ResizeHandle = (
-//     <ResizeHandleButton>
-//       <HandleIcon tw='w-4 h-4 text-gray-600' />
-//     </ResizeHandleButton>
-//   );
-
-// const componentBlockRefs = {};
-
-// const updateComponentBlockIframeHeight = (iframe) => {
-//   iframe.style.height = "auto";
-//   iframe.style.height =
-//     iframe.contentWindow.document.body.scrollHeight + "px";
-// };
-
-// return (
-//   <div ref={ref} tw='mt-32'>
-//     <ComponentsType>{components.type}</ComponentsType>
-//     <Components>
-//       {Object.values(components.elements).map((component, componentIndex) => (
-//         <Component key={componentIndex}>
-//           <ComponentHeading>
-//             <ComponentName>{component.name}</ComponentName>
-//             <ComponentPreviewLink
-//               className='group'
-//               href={component.url}
-//               target='_blank'
-//             >
-//               View Live Demo{" "}
-//               <ArrowRightIcon tw='transition duration-300 transform group-hover:translate-x-px ml-2 w-4 h-4' />
-//             </ComponentPreviewLink>
-//           </ComponentHeading>
-//           <ComponentContent>
-//             <ResizableBox
-//               minWidth={310}
-//               default={{
-//                 width: "100%",
-//                 height: "100%",
-//               }}
-//               bounds='parent'
-//               disableDragging={true}
-//               enableResizing={{ right: true }}
-//               resizeHandleComponent={{ right: ResizeHandle }}
-//               resizeHandleWrapperClass={`resizeHandleWrapper`}
-//               onResize={() =>
-//                 updateComponentBlockIframeHeight(
-//                   componentBlockRefs[component.url]
-//                 )
-//               }
-//             >
-//               <iframe
-//                 src={component.url}
-//                 title='Hero'
-//                 width='100%'
-//                 ref={(ref) => (componentBlockRefs[component.url] = ref)}
-//                 onLoad={(e) => updateComponentBlockIframeHeight(e.target)}
-//               />
-//             </ResizableBox>
-//           </ComponentContent>
-//         </Component>
-//       ))}
-//     </Components>
-//   </div>
-// );
-// };

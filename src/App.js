@@ -6,6 +6,7 @@ import Navbar from "Navbar.js";
 import AddLandingPage from "AddLandingPage.js";
 import MainLandingPage from "MainLandingPage.js";
 import SearchLandingPage from "SearchLandingPage";
+import TCPage from "TCPage.js";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -22,6 +23,9 @@ export default function App() {
         </Route>
         <Route exact path='/Search'>
           <SearchLandingPage />
+        </Route>
+        <Route exact path='/tandc'>
+          <TCPage />
         </Route>
       </Switch>
     </Router>
