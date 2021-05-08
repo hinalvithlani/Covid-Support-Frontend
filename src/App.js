@@ -2,10 +2,10 @@ import "tailwindcss/dist/base.css";
 import "styles/globalStyles.css";
 import React from "react";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import Navbar from "Navbar.js";
-import AddLandingPage from "AddLandingPage.js";
-import MainLandingPage from "MainLandingPage.js";
-import SearchLandingPage from "SearchLandingPage";
+import Navbar from "landingPages/Navbar.js";
+import AddLandingPage from "landingPages/AddLandingPage.js";
+import MainLandingPage from "landingPages/MainLandingPage.js";
+import SearchLandingPage from "landingPages/SearchLandingPage";
 import TCPage from "TCPage.js";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

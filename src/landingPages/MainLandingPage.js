@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/MainLandingPage.css";
+import "../css/MainLandingPage.css";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container, Content2Xl } from "components/misc/Layouts";
 import tw from "twin.macro";
@@ -8,7 +8,7 @@ import { SectionDescription as DescriptionBase } from "components/misc/Typograph
 import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
 import { ReactComponent as RadioIcon } from "feather-icons/dist/icons/radio.svg";
 
-import doc from "images/doc1.png";
+import doc from "../images/doc1.png";
 
 const Row = tw.div`flex`;
 const HeroRow = tw(

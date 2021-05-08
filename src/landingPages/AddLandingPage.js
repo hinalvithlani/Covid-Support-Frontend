@@ -1,6 +1,6 @@
 import React from "react";
-import "./css/AddLandingPage.css";
-import leads from "./images/leads.png";
+import "../css/AddLandingPage.css";
+import leads from "../images/leads.png";
 import LeadsForm from "./LeadsForm.js"
 import axios from "axios";
 
