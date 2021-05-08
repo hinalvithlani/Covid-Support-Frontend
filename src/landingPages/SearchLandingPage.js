@@ -53,36 +53,43 @@ const SearchLandingPage = () => {
   };
   return (
     <div>
+      <div className="abc">
       <label> State
-        <States value={formData.state} onChange={onChangeState}></States>
+        <States value={formData.state} onChange={onChangeState} style={{width:"100%"}}></States>
         {/* <input type="text" name="field31" value={formData.state} onChange={onChangeState} required/> */}
       </label>
+      <br/>
       <label> City
-        {stateSuccess?<City value={formData.city} onChange={onChangeCity} state={states}></City>:null}                    
+        {stateSuccess?<City value={formData.city} onChange={onChangeCity} state={states} style={{width:"100%"}}></City>:null}                    
         {/* <input type="text" name="field32" value={formData.city} onChange={onChangeCity} required/> */}
       </label>
+      <br/>
       <Button
         variant='contained'
         color='primary'
-        style={{ marginTop: "40px", marginLeft: "2%" }}
         onClick={search}
       >
         Search
       </Button>
+      </div>
       {res1!==null ? (
         <React.Fragment>
+          {res1.length==0?window.alert("No Results for this state/city combination"):null}
            {Object.keys(res1).map((x,i) => (
              <Card key={i} style={{ width: "40%" }} className='ab'>
              <CardActionArea>
                <CardContent>
                  <Typography gutterBottom variant='h5' component='h2'>
-                   {res1[x].city}
+                   {res1[x].location}
+                   {/* {res1[x].phone_number_provider} */}
                  </Typography>
-                 <Typography gutterBottom variant='h5' component='h2'>
-                   {res1[x].state}
+                 <Typography gutterBottom variant='body1' component='h2'>
+                   Number of Beds available: {res1[x].beds}
+                   <br />
+                   Number of Oxygen cylinders available: {res1[x].oxygen}
                  </Typography>
                  <Typography variant='body2' color='textSecondary' component='p'>
-                   {res1[x].location}
+                   {res1[x].city}, {res1[x].state}
                  </Typography>
                  <Typography>Verified: No</Typography>
                </CardContent>
@@ -109,9 +116,7 @@ const SearchLandingPage = () => {
            </Card>
           ))}
         </React.Fragment>
-      ) : 
-      // searchSuccess?window.alert("No Results for this state/city combination"):
-      null}
+      ) : null}
     </div>
   );
 };
