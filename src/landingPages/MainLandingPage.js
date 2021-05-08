@@ -13,13 +13,13 @@ import doc from "../images/doc1.png";
 const Row = tw.div`flex`;
 const HeroRow = tw(
   Row
-)`flex-col lg:flex-row justify-between items-center pt-1 pb-4 max-w-screen-2xl mx-auto flex-wrap`;
+)`flex-col lg:flex-row justify-between pt-1 max-w-screen-2xl mx-auto flex-wrap`;
 
 const Column = tw.div`flex-1`;
 
 const UpdateNotice = tw(
   Column
-)`w-full flex-auto mb-4 sm:mb-8 rounded px-4 py-3 sm:px-5 sm:py-4 bg-orange-100 text-orange-800 flex items-center sm:items-start md:items-center justify-center lg:justify-start border border-orange-200 text-xs sm:text-sm text-center sm:text-left md:leading-none`;
+)`w-full flex-auto mb-0 sm:mb-8 rounded px-4 py-3 sm:px-5 sm:py-4 bg-orange-100 text-orange-800 flex sm:items-start md:items-center justify-center lg:justify-start border border-orange-200 text-xs sm:text-sm text-center sm:text-left md:leading-none`;
 const UpdateNoticeIcon = tw(RadioIcon)`w-0 sm:w-5 sm:mr-3`;
 
 const TextColumn = tw(
@@ -48,20 +48,14 @@ export default ({
   window.gtag("js", new Date());
   window.gtag("config", "UA-45799926-9");
 
-  features = features || [
-    `Beds`,
-    `Oxygen`,
-    `Vaccines`,
-    "Remdesivir",
-    "Plasma",
-    "Food Resources",
-    "Ambulance",
-    "Test Centre",
-  ];
+  features = features || [`Beds`, `Oxygen`, `Vaccines`, "Remdesivir"];
 
   return (
     <AnimationRevealPage disabled>
-      <Container tw='bg-gray-100 -mx-8 -mt-8 pt-8 px-8'>
+      <Container
+        tw='bg-gray-100 -mx-8 -mt-8 pt-4 px-8 -mb-20'
+        style={{ maxHeight: "700px" }}
+      >
         <Content2Xl>
           <HeroRow>
             <UpdateNotice>
@@ -69,10 +63,16 @@ export default ({
               Last updated on 6th May, 2021
             </UpdateNotice>
             <TextColumn>
-              <Heading style={{textAlign: "left"}} as='h1' className='aa'>
+              <Heading
+                style={{ textAlign: "left", fontSize: "45px" }}
+                as='h1'
+                className='aa'
+              >
                 {heading}
               </Heading>
-              <Description style={{textAlign: "justify"}}>{description}</Description>
+              <Description style={{ textAlign: "justify" }}>
+                {description}
+              </Description>
               <FeatureList>
                 {features.map((feature, index) => (
                   <Feature key={index}>
@@ -84,7 +84,7 @@ export default ({
             </TextColumn>
             <ImageColumn>
               <ImageContainer>
-                <Image src={doc} />
+                <Image src={doc} style={{ transform: "translate(0%,-20%)" }} />
               </ImageContainer>
             </ImageColumn>
           </HeroRow>

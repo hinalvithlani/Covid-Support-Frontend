@@ -1,24 +1,23 @@
-.a{
-    width:80%
+.a {
+  width: 80%;
 }
 
-.ab{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    float: left;
-    margin: 4%;
-    padding-bottom: 10px;
+.ab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  float: left;
+  margin: 4%;
+  padding-bottom: 10px;
 }
-.abc{
-    margin-left: 5%;
-    margin-top: 2%;
+.abc {
+  margin-left: 5%;
+  margin-top: 2%;
 }
-.ac
-{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    float: left;
-    margin: 4%;
+.ac {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  float: left;
+  margin: 4%;
 }

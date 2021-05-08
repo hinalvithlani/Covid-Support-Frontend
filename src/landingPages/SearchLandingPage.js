@@ -8,11 +8,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import States from "./State.js";
 import City from "./City.js";
-var states="";
+var states = "";
 
 const SearchLandingPage = () => {
   const [formData, setFormData] = React.useState({});
-  const [res1,setRes1] = React.useState(null);
+  const [res1, setRes1] = React.useState(null);
   const [stateSuccess, setStateSuccess] = React.useState(false);
   const [searchSuccess, setSearchSuccess] = React.useState(false);
   const onChangeCity = (e) => {
@@ -21,22 +21,24 @@ const SearchLandingPage = () => {
   };
   const onChangeState = (e) => {
     setFormData({ ...formData, state: e.target.value });
-    states=e.target.value;
+    states = e.target.value;
     console.log(states);
     setStateSuccess(true);
   };
+  const help = () => {};
+  const nhelp = () => {};
   const search = () => {
     console.log(formData.city);
-    setSearchSuccess(true);
+    //setSearchSuccess(true);
     axios
       .post(
-        "http://localhost:3002/city",
+        "http://localhost:3001/city",
         { ...formData },
         {
-          headers:{
-            "Access-Control-Allow-Origin": '*'
-          }    
-      },
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        },
         {
           withCredentials: true,
         }
@@ -53,69 +55,104 @@ const SearchLandingPage = () => {
   };
   return (
     <div>
-      <div className="abc">
-      <label> State
-        <States value={formData.state} onChange={onChangeState} style={{width:"100%"}}></States>
-        {/* <input type="text" name="field31" value={formData.state} onChange={onChangeState} required/> */}
-      </label>
-      <br/>
-      <label> City
-        {stateSuccess?<City value={formData.city} onChange={onChangeCity} state={states} style={{width:"100%"}}></City>:null}                    
-        {/* <input type="text" name="field32" value={formData.city} onChange={onChangeCity} required/> */}
-      </label>
-      <br/>
-      <Button
-        variant='contained'
-        color='primary'
-        onClick={search}
-      >
-        Search
-      </Button>
+      <div className='abc'>
+        <label>
+          {" "}
+          State
+          <States
+            value={formData.state}
+            onChange={onChangeState}
+            style={{ width: "100%" }}
+          ></States>
+          {/* <input type="text" name="field31" value={formData.state} onChange={onChangeState} required/> */}
+        </label>
+        <br />
+        <label>
+          {" "}
+          City
+          {stateSuccess ? (
+            <City
+              value={formData.city}
+              onChange={onChangeCity}
+              state={states}
+              style={{ width: "100%" }}
+            ></City>
+          ) : null}
+          {/* <input type="text" name="field32" value={formData.city} onChange={onChangeCity} required/> */}
+        </label>
+        <br />
+        <Button variant='contained' color='primary' onClick={search}>
+          Search
+        </Button>
       </div>
-      {res1!==null ? (
+      {res1 !== null ? (
         <React.Fragment>
-          {res1.length==0?window.alert("No Results for this state/city combination"):null}
-           {Object.keys(res1).map((x,i) => (
-             <Card key={i} style={{ width: "40%" }} className='ab'>
-             <CardActionArea>
-               <CardContent>
-                 <Typography gutterBottom variant='h5' component='h2'>
-                   {res1[x].location}
-                   {/* {res1[x].phone_number_provider} */}
-                 </Typography>
-                 <Typography gutterBottom variant='body1' component='h2'>
-                   Number of Beds available: {res1[x].beds}
-                   <br />
-                   Number of Oxygen cylinders available: {res1[x].oxygen}
-                 </Typography>
-                 <Typography variant='body2' color='textSecondary' component='p'>
-                   {res1[x].city}, {res1[x].state}
-                 </Typography>
-                 <Typography>Verified: No</Typography>
-               </CardContent>
-               <Button
-                 className='ac'
-                 variant='contained'
-                 color='primary'
-                 style={{ width: "30%", marginTop: "10px", marginLeft: "2%" }}
-               >
-                 <i className="fas fa-thumbs-up"></i>
-                 Helpful
-               </Button>
-               
-               <Button
-                 className='ac'
-                 variant='contained'
-                 color='primary'
-                 style={{ marginTop: "10px", marginLeft: "2%", width: "30%" }}
-               >
-                 <i className="fas fa-thumbs-down"></i>
-                 Not Helpful
-               </Button>
-             </CardActionArea>
-           </Card>
+          {Object.keys(res1).map((x, i) => (
+            <Card key={i} style={{ width: "40%" }} className='ab'>
+              <CardActionArea>
+                <CardContent>
+                  <Typography gutterBottom variant='h5' component='h2'>
+                    {res1[x].location}
+                    {/* {res1[x].phone_number_provider} */}
+                  </Typography>
+                  <Typography gutterBottom variant='body1' component='h2'>
+                    Number of Beds available: {res1[x].beds}
+                    <br />
+                    Number of Oxygen cylinders available: {res1[x].oxygen}
+                  </Typography>
+                  <Typography
+                    variant='body2'
+                    color='textSecondary'
+                    component='p'
+                  >
+                    {res1[x].city}, {res1[x].state}
+                  </Typography>
+                  <Typography>
+                    Verified: No
+                    {/* <br /> Helpful: 30 Not Helpful: 10 */}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <div>
+                <Button
+                  className='ac'
+                  variant='contained'
+                  color='primary'
+                  style={{
+                    width: "30%",
+                    marginTop: "10px",
+                    marginLeft: "2%",
+                  }}
+                  onClick={help}
+                >
+                  <i className='fas fa-thumbs-up'></i>
+                  Helpful
+                </Button>
+
+                <Button
+                  className='ac'
+                  variant='contained'
+                  color='primary'
+                  style={{
+                    marginTop: "10px",
+                    marginLeft: "2%",
+                    width: "30%",
+                  }}
+                  onClick={nhelp}
+                >
+                  <i className='fas fa-thumbs-down'></i>
+                  Not Helpful
+                </Button>
+              </div>
+            </Card>
           ))}
         </React.Fragment>
+      ) : searchSuccess && res1 === null ? (
+        <div>
+          <Typography style={{ margin: "5%", fontSize: "30px", color: "red" }}>
+            No results found!
+          </Typography>
+        </div>
       ) : null}
     </div>
   );
