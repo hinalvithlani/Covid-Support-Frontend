@@ -8,7 +8,8 @@ import City from "./City.js";
 var states = "";
 
 const LeadsForm = () => {
-  const [formData, setFormData] = React.useState({});
+  
+  const [formData, setFormData] = React.useState({verified: false, helpful: 0, not_helpful: 0 });
   const [loginSuccess, setLoginSuccess] = React.useState(false);
   const [stateSuccess, setStateSuccess] = React.useState(false);
   const onChangeEmail = (e) => {
@@ -26,9 +27,9 @@ const LeadsForm = () => {
   const onChangePhNo = (e) => {
     setFormData({ ...formData, phone_number: e.target.value });
   };
-  // const onChangePhNoP = (e) => {
-  //     setFormData({ ...formData, phone_number_provider: e.target.value });
-  // };
+  const onChangePhNoP = (e) => {
+    setFormData({ ...formData, provider_contact: e.target.value });
+  };
 
   const onChangeBeds = (e) => {
     setFormData({ ...formData, beds: e.target.value });
@@ -46,7 +47,14 @@ const LeadsForm = () => {
   const onChangeLocation = (e) => {
     setFormData({ ...formData, location: e.target.value });
   };
+   const onChangeValues = () => {
+    setFormData({ ...formData});
+  };
+  //var extra={verified:"No", helpful: 0, not_helpful: 0};
   const addLeads = () => {
+    // setFormData({...formData, ...extra})
+    // onChangeValues();
+    console.log(formData);
     axios
       .post(
         "http://localhost:3001/Add",
@@ -66,6 +74,7 @@ const LeadsForm = () => {
       })
       .catch((e) => {
         console.log(e);
+
         window.alert("Not added");
       });
   };
@@ -145,9 +154,17 @@ const LeadsForm = () => {
               required
             />
           </label>
-          {/* <label>Phone Number of Provider
-                        <input type="number" name="field7" value={formData.phnoP} onChange={onChangePhNoP} maxLength="10" required/>
-                    </label> */}
+          <label>
+            Phone Number of Provider
+            <input
+              type='number'
+              name='field7'
+              value={formData.phnoP}
+              onChange={onChangePhNoP}
+              maxLength='10'
+              required
+            />
+          </label>
           <label>
             Number Of Vacant Beds
             <input

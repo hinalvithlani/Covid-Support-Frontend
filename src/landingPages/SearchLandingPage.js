@@ -15,6 +15,8 @@ const SearchLandingPage = () => {
   const [res1, setRes1] = React.useState(null);
   const [stateSuccess, setStateSuccess] = React.useState(false);
   const [searchSuccess, setSearchSuccess] = React.useState(false);
+  const [c1, setc1] = React.useState(0);
+  const [c2, setc2] = React.useState(0);
   const onChangeCity = (e) => {
     setFormData({ ...formData, city: e.target.value });
     console.log(e.target.value);
@@ -25,8 +27,60 @@ const SearchLandingPage = () => {
     console.log(states);
     setStateSuccess(true);
   };
-  const help = () => {};
-  const nhelp = () => {};
+  const help = (props) => {
+    var x=parseInt(props.helpful);
+    x+=1;
+    props.helpful=x.toString();
+    axios
+      .post(
+        "http://localhost:3001/add",
+        props,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setSearchSuccess(true);
+        setRes1(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+        window.alert("No Results for this state/city combination");
+      });
+  };
+  const nhelp = (props) => {
+    var x=parseInt(props.not_helpful);
+    x+=1;
+    props.not_helpful=x.toString();
+    axios
+      .post(
+        "http://localhost:3001/add",
+        props,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setSearchSuccess(true);
+        setRes1(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+        window.alert("No Results for this state/city combination");
+      });
+  };
   const search = () => {
     console.log(formData.city);
     //setSearchSuccess(true);
@@ -109,7 +163,8 @@ const SearchLandingPage = () => {
                   </Typography>
                   <Typography>
                     Verified: No
-                    {/* <br /> Helpful: 30 Not Helpful: 10 */}
+                    <br /> Helpful: {res1[x].helpful + c1} Not Helpful:{" "}
+                    {res1[x].not_helpful + c2}
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -123,7 +178,7 @@ const SearchLandingPage = () => {
                     marginTop: "10px",
                     marginLeft: "2%",
                   }}
-                  onClick={help}
+                  onClick={() => {help(res1[x])}}
                 >
                   <i className='fas fa-thumbs-up'></i>
                   Helpful
@@ -138,7 +193,7 @@ const SearchLandingPage = () => {
                     marginLeft: "2%",
                     width: "30%",
                   }}
-                  onClick={nhelp}
+                  onClick={() => {nhelp(res1[x])}}
                 >
                   <i className='fas fa-thumbs-down'></i>
                   Not Helpful
