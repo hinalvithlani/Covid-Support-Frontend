@@ -148,7 +148,6 @@ const SearchLandingPage = () => {
             onChange={onChangeState}
             style={{ width: "100%" }}
           ></States>
-          {/* <input type="text" name="field31" value={formData.state} onChange={onChangeState} required/> */}
         </label>
         <br />
         <label>
@@ -162,7 +161,6 @@ const SearchLandingPage = () => {
               style={{ width: "100%" }}
             ></City>
           ) : null}
-          {/* <input type="text" name="field32" value={formData.city} onChange={onChangeCity} required/> */}
         </label>
         <br />
         <Button variant='contained' color='primary' onClick={search}>
@@ -176,8 +174,7 @@ const SearchLandingPage = () => {
               <CardActionArea>
                 <CardContent>
                   <Typography gutterBottom variant='h5' component='h2'>
-                    {res1[x].location}
-                    
+                    {res1[x].location}                    
                   </Typography>
                   <Typography
                     variant='body2'

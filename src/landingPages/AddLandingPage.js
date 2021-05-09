@@ -6,9 +6,6 @@ import doc from "../images/doc2.png";
 
 const AddLandingPage = () => {
   return (
-    // <div>
-    //   <ReactTypeformEmbed url="https://lq60r038hq4.typeform.com/to/AG5mub9A" />;
-    // </div>
     <div>
       <div className='sign-in'>
         <div className='sign-in-inner'>

@@ -42,7 +42,7 @@ const LeadsForm = () => {
     setFormData({ ...formData, location: e.target.value });
   };
   const addLeads = () => {
-    if(formData.provider_contact>=9999999999)
+    if(formData.provider_contact>=9999999999 || formData.provider_contact<=1000000000)
     {
       window.alert("Please enter Valid phone number");
     }

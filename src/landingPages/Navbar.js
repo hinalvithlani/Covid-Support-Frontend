@@ -1,4 +1,3 @@
-import { Icon } from "@material-ui/core";
 import { LogoLink } from "components/headers/light.js";
 import { Container, Content2Xl } from "components/misc/Layouts";
 import tw from "twin.macro";

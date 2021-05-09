@@ -6,7 +6,6 @@ import tw from "twin.macro";
 import { SectionHeading as HeadingBase } from "components/misc/Headings";
 import { SectionDescription as DescriptionBase } from "components/misc/Typography";
 import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
-import { ReactComponent as RadioIcon } from "feather-icons/dist/icons/radio.svg";
 
 import doc from "../images/doc1.png";
 
