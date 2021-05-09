@@ -15,16 +15,14 @@ const SearchLandingPage = () => {
   const [res1, setRes1] = React.useState(null);
   const [stateSuccess, setStateSuccess] = React.useState(false);
   const [searchSuccess, setSearchSuccess] = React.useState(false);
-  const [c1, setc1] = React.useState(0);
-  const [c2, setc2] = React.useState(0);
+  var c1=0;
+  var c2=0;
   const onChangeCity = (e) => {
     setFormData({ ...formData, city: e.target.value });
-    console.log(e.target.value);
   };
   const onChangeState = (e) => {
     setFormData({ ...formData, state: e.target.value });
     states = e.target.value;
-    console.log(states);
     setStateSuccess(true);
   };
   const help = (props) => {
@@ -45,12 +43,30 @@ const SearchLandingPage = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
+        setSearchSuccess(true);
+      })
+      .catch((e) => {
+        window.alert("No Results for this state/city combination");
+      });
+
+      axios
+      .post(
+        "http://localhost:3001/city",
+        { ...formData },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
         setSearchSuccess(true);
         setRes1(res.data);
       })
       .catch((e) => {
-        console.log(e);
         window.alert("No Results for this state/city combination");
       });
   };
@@ -72,18 +88,34 @@ const SearchLandingPage = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
+        setSearchSuccess(true);
+      })
+      .catch((e) => {
+        window.alert("No Results for this state/city combination");
+      });
+
+      axios
+      .post(
+        "http://localhost:3001/city",
+        { ...formData },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
         setSearchSuccess(true);
         setRes1(res.data);
       })
       .catch((e) => {
-        console.log(e);
         window.alert("No Results for this state/city combination");
       });
   };
   const search = () => {
-    console.log(formData.city);
-    //setSearchSuccess(true);
     axios
       .post(
         "http://localhost:3001/city",
@@ -98,12 +130,10 @@ const SearchLandingPage = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         setSearchSuccess(true);
         setRes1(res.data);
       })
       .catch((e) => {
-        console.log(e);
         window.alert("No Results for this state/city combination");
       });
   };
@@ -147,7 +177,14 @@ const SearchLandingPage = () => {
                 <CardContent>
                   <Typography gutterBottom variant='h5' component='h2'>
                     {res1[x].location}
-                    {/* {res1[x].phone_number_provider} */}
+                    
+                  </Typography>
+                  <Typography
+                    variant='body2'
+                    color='textSecondary'
+                    component='p'
+                  >
+                    {res1[x].provider_contact}
                   </Typography>
                   <Typography gutterBottom variant='body1' component='h2'>
                     Number of Beds available: {res1[x].beds}
@@ -166,6 +203,10 @@ const SearchLandingPage = () => {
                     <br /> Helpful: {res1[x].helpful + c1} Not Helpful:{" "}
                     {res1[x].not_helpful + c2}
                   </Typography>
+                  {res1[x]!==null?
+                  <Typography>
+                   Other resources Available: {res1[x].others}
+                  </Typography>: null}
                 </CardContent>
               </CardActionArea>
               <div>

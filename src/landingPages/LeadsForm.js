@@ -7,9 +7,8 @@ import City from "./City.js";
 
 var states = "";
 
-const LeadsForm = () => {
-  
-  const [formData, setFormData] = React.useState({verified: false, helpful: 0, not_helpful: 0 });
+const LeadsForm = () => {  
+  const [formData, setFormData] = React.useState({verified: false, helpful: 0, not_helpful: 0, others: "NA" });
   const [loginSuccess, setLoginSuccess] = React.useState(false);
   const [stateSuccess, setStateSuccess] = React.useState(false);
   const onChangeEmail = (e) => {
@@ -21,11 +20,7 @@ const LeadsForm = () => {
   const onChangeState = (e) => {
     setFormData({ ...formData, state: e.target.value });
     states = e.target.value;
-    console.log(states);
     setStateSuccess(true);
-  };
-  const onChangePhNo = (e) => {
-    setFormData({ ...formData, phone_number: e.target.value });
   };
   const onChangePhNoP = (e) => {
     setFormData({ ...formData, provider_contact: e.target.value });
@@ -42,19 +37,20 @@ const LeadsForm = () => {
   };
   const onChangeCity = (e) => {
     setFormData({ ...formData, city: e.target.value });
-    console.log(e.target.value);
   };
   const onChangeLocation = (e) => {
     setFormData({ ...formData, location: e.target.value });
   };
-   const onChangeValues = () => {
-    setFormData({ ...formData});
-  };
-  //var extra={verified:"No", helpful: 0, not_helpful: 0};
   const addLeads = () => {
-    // setFormData({...formData, ...extra})
-    // onChangeValues();
-    console.log(formData);
+    if(formData.provider_contact>=9999999999)
+    {
+      window.alert("Please enter Valid phone number");
+    }
+    else if(formData.beds<0 || formData.oxygen<0)
+    {
+      window.alert("Negative number not accepted for beds and oxygen cylinders");
+    }
+    else{
     axios
       .post(
         "http://localhost:3001/Add",
@@ -69,14 +65,12 @@ const LeadsForm = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         setLoginSuccess(true);
       })
       .catch((e) => {
-        console.log(e);
-
-        window.alert("Not added");
+        window.alert("Please add all required details");
       });
+    }
   };
   return (
     <div className='form-style-10'>
@@ -110,16 +104,6 @@ const LeadsForm = () => {
               required
             />
           </label>
-          <label>
-            Phone Number
-            <input
-              type='number'
-              value={formData.phno}
-              onChange={onChangePhNo}
-              name='field3'
-              maxLength='10'
-            />
-          </label>
         </div>
 
         <div className='section'>
@@ -130,7 +114,6 @@ const LeadsForm = () => {
             {" "}
             State
             <States value={formData.state} onChange={onChangeState}></States>
-            {/* <input type="text" name="field31" value={formData.state} onChange={onChangeState} required/> */}
           </label>
           <label>
             {" "}
@@ -142,7 +125,6 @@ const LeadsForm = () => {
                 state={states}
               ></City>
             ) : null}
-            {/* <input type="text" name="field32" value={formData.city} onChange={onChangeCity} required/> */}
           </label>
           <label>
             Name of Provider
@@ -176,13 +158,13 @@ const LeadsForm = () => {
             />
           </label>
           <label>
-            {" "}
             Number of Oxygen cylinders
             <input
               type='number'
               name='field9'
               value={formData.oxygen}
               onChange={onChangeOxygen}
+              min='0'
             />
           </label>
           <label>
@@ -198,18 +180,6 @@ const LeadsForm = () => {
         <div className='button-section'>
           <input type='submit' name='Sign Up' onClick={addLeads} />
           {loginSuccess ? <Redirect to='/' /> : null}
-          {/* <span className='privacy-policy'>
-            <input
-              type='checkbox'
-              name='field11'
-              
-              required
-            />
-            You agree to our
-            <Link to='./tandc' style={{ textDecoration: "none" }}>
-              Terms and Policy.
-            </Link>
-          </span> */}
         </div>
       </div>
     </div>

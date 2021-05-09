@@ -1,6 +1,6 @@
 .sign-in {
   position: absolute;
-  height: 150%;
+  height: 190%;
   width: 100%;
   background-color: rgba(20, 20, 20, 0.5);
   z-index: 1000;
@@ -42,7 +42,6 @@
 
 .sign-in-form {
   position: relative;
-  margin-bottom: 10%;
   float: right;
 }
 

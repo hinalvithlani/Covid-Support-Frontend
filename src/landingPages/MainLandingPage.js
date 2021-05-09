@@ -17,11 +17,6 @@ const HeroRow = tw(
 
 const Column = tw.div`flex-1`;
 
-const UpdateNotice = tw(
-  Column
-)`w-full flex-auto mb-0 sm:mb-8 rounded px-4 py-3 sm:px-5 sm:py-4 bg-orange-100 text-orange-800 flex sm:items-start md:items-center justify-center lg:justify-start border border-orange-200 text-xs sm:text-sm text-center sm:text-left md:leading-none`;
-const UpdateNoticeIcon = tw(RadioIcon)`w-0 sm:w-5 sm:mr-3`;
-
 const TextColumn = tw(
   Column
 )`mx-auto lg:mr-0 max-w-2xl lg:max-w-xl xl:max-w-2xl flex-shrink-0`;
@@ -54,14 +49,9 @@ export default ({
     <AnimationRevealPage disabled>
       <Container
         tw='bg-gray-100 -mx-8 -mt-8 pt-4 px-8 -mb-20'
-        style={{ maxHeight: "700px" }}
-      >
+        style={{ maxHeight: "700px" }}>
         <Content2Xl>
           <HeroRow>
-            <UpdateNotice>
-              <UpdateNoticeIcon />
-              Last updated on 6th May, 2021
-            </UpdateNotice>
             <TextColumn>
               <Heading
                 style={{ textAlign: "left", fontSize: "45px" }}
