@@ -53,7 +53,7 @@ const LeadsForm = () => {
     else{
     axios
       .post(
-        "http://localhost:3001/Add",
+        "https://stark-thicket-73314.herokuapp.com/Add",
         { ...formData },
         {
           headers: {

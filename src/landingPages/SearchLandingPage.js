@@ -31,7 +31,7 @@ const SearchLandingPage = () => {
     props.helpful=x.toString();
     axios
       .post(
-        "http://localhost:3001/add",
+        "https://stark-thicket-73314.herokuapp.com/Add",
         props,
         {
           headers: {
@@ -51,7 +51,7 @@ const SearchLandingPage = () => {
 
       axios
       .post(
-        "http://localhost:3001/city",
+        "https://stark-thicket-73314.herokuapp.com/city",
         { ...formData },
         {
           headers: {
@@ -76,7 +76,7 @@ const SearchLandingPage = () => {
     props.not_helpful=x.toString();
     axios
       .post(
-        "http://localhost:3001/add",
+        "https://stark-thicket-73314.herokuapp.com/add",
         props,
         {
           headers: {
@@ -96,7 +96,7 @@ const SearchLandingPage = () => {
 
       axios
       .post(
-        "http://localhost:3001/city",
+        "https://stark-thicket-73314.herokuapp.com/city",
         { ...formData },
         {
           headers: {
@@ -118,7 +118,7 @@ const SearchLandingPage = () => {
   const search = () => {
     axios
       .post(
-        "http://localhost:3001/city",
+        "https://stark-thicket-73314.herokuapp.com/city",
         { ...formData },
         {
           headers: {
