@@ -36,10 +36,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "yarn build && netlify deploy --prod --dir=build"
+    "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://stark-thicket-73314.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app",
     "overrides": [
