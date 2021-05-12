@@ -2,7 +2,6 @@ import { LogoLink } from "components/headers/light.js";
 import { Container, Content2Xl } from "components/misc/Layouts";
 import tw from "twin.macro";
 import icon from "../images/icon.png";
-
 const Row = tw.div`flex`;
 const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
 const NavLink = tw.a`mt-4 lg:mt-0 transition duration-300 font-medium pb-1 border-b-2 mr-12 text-gray-700 border-gray-400 hocus:border-gray-700`;

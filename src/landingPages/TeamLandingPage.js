@@ -9,15 +9,16 @@ import hinal from "../images/hinal.JPG";
 import pranav from "../images/pranav.jpg";
 import vinayak from "../images/vinayak.jpeg";
 import gaurav from "../images/gaurav.jpeg";
+import vishnu from "../images/vishnuSir.png"
 import "../css/TeamLandingPage.css";
 
 const TeamLandingPage = () => {
     return(
-        <div style={{margin:'2%'}}>
+        <div style={{margin:'2%', textAlign: 'center'}}>
             <Card style={{margin:'auto' ,width:'45%'}}>
                 <CardActionArea>
                     <CardMedia
-                        image={pranav}
+                        image={vishnu}
                         title="Contemplative Reptile"
                         style={{
                             width: "150px",
