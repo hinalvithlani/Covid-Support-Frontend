@@ -16,7 +16,7 @@ const Navbar = () => {
             <img src={icon} alt='' />
             COVID Support
           </LogoLink>
-          <div tw='flex flex-wrap justify-center lg:justify-end items-center -mr-12'>
+          <div tw='flex flex-wrap justify-center lg:justify-end items-center '>
             <NavLink href='/'>Home</NavLink>
             <NavLink href='/Add'>Add Leads</NavLink>
             <NavLink href='/Search'>Search Leads</NavLink>

@@ -7,21 +7,23 @@ import Typography from "@material-ui/core/Typography";
 import samiksa from "../images/Samiksa.jpeg";
 import hinal from "../images/hinal.JPG";
 import pranav from "../images/pranav.jpg";
+import vinayak from "../images/vinayak.jpeg";
+import gaurav from "../images/gaurav.jpeg";
 import "../css/TeamLandingPage.css";
 
 const TeamLandingPage = () => {
     return(
-        <div>
+        <div style={{margin:'2%'}}>
             <Card style={{margin:'auto' ,width:'45%'}}>
                 <CardActionArea>
                     <CardMedia
                         image={pranav}
                         title="Contemplative Reptile"
                         style={{
-                            width: "100px",
+                            width: "150px",
                             borderRadius: "10%",
                             margin: "auto auto",
-                            height: "100px",
+                            height: "150px",
                             marginTop: "20px",
                         }}
                     />
@@ -38,10 +40,10 @@ const TeamLandingPage = () => {
                         image={samiksa}
                         title="Contemplative Reptile"
                         style={{
-                            width: "100px",
+                            width: "150px",
                             borderRadius: "10%",
                             margin: "auto auto",
-                            height: "100px",
+                            height: "150px",
                             marginTop: "20px",
                         }}
                     />
@@ -58,10 +60,10 @@ const TeamLandingPage = () => {
                         image={hinal}
                         title="Contemplative Reptile"
                         style={{
-                            width: "100px",
+                            width: "150px",
                             borderRadius: "10%",
                             margin: "auto auto",
-                            height: "100px",
+                            height: "150px",
                             marginTop: "20px",
                         }}
                     />
@@ -78,10 +80,10 @@ const TeamLandingPage = () => {
                         image={pranav}
                         title="Contemplative Reptile"
                         style={{
-                            width: "100px",
+                            width: "150px",
                             borderRadius: "10%",
                             margin: "auto auto",
-                            height: "100px",
+                            height: "150px",
                             marginTop: "20px",
                         }}
                     />
@@ -95,13 +97,13 @@ const TeamLandingPage = () => {
             <Card style={{marginLeft:'18%' ,width:'29%', float: 'left'}}>
                 <CardActionArea>
                     <CardMedia
-                        image={pranav}
+                        image={vinayak}
                         title="Contemplative Reptile"
                         style={{
-                            width: "100px",
+                            width: "150px",
                             borderRadius: "10%",
                             margin: "auto auto",
-                            height: "100px",
+                            height: "150px",
                             marginTop: "20px",
                         }}
                     />
@@ -115,13 +117,13 @@ const TeamLandingPage = () => {
             <Card style={{marginRight:'18%' ,width:'29%', float: 'right'}}>
                 <CardActionArea>
                     <CardMedia
-                        image={pranav}
+                        image={gaurav}
                         title="Contemplative Reptile"
                         style={{
-                            width: "100px",
+                            width: "150px",
                             borderRadius: "10%",
                             margin: "auto auto",
-                            height: "100px",
+                            height: "150px",
                             marginTop: "20px",
                         }}
                     />
@@ -131,8 +133,7 @@ const TeamLandingPage = () => {
                     </Typography>
                     </CardContent>
                 </CardActionArea>
-            </Card>
-            
+            </Card>            
         </div>
     )
 }
