@@ -20,6 +20,7 @@ const Navbar = () => {
             <NavLink href='/'>Home</NavLink>
             <NavLink href='/Add'>Add Leads</NavLink>
             <NavLink href='/Search'>Search Leads</NavLink>
+            <NavLink href='/Team'>Team</NavLink>
             <div tw='md:hidden flex-100 h-0'></div>
           </div>
         </NavRow>
